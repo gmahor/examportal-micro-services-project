@@ -1,0 +1,48 @@
+server:
+  port: 8001
+
+##
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    instance-id: ${spring.application.name}:${random.uuid}
+
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  application:
+    name: user-service
+
+
+  ## DATABASE
+  datasource:
+    url: jdbc:postgresql://localhost:5432/examportalDB
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        use_sql_comments: true
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+# JWT Token
+jwtSecret: 8246D376CB35D92C592D5AC8792C136EEA0519E52D9B248758CD05DAFFD7B81E
+
+# Backend server details
+backendServerDetail: http://localhost:8090
+
+# JWT
+jwtKeyPath: conf/jwt_rsa_pri.pem
+
+# 1 month
+accessTokenExpiryTime: 2629800000
