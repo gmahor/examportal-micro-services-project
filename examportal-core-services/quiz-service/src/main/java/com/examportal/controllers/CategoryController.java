@@ -134,7 +134,7 @@ public class CategoryController {
             }
             String dltMsg = categoryService.deleteCategory(id);
             if (dltMsg.equals(MessageConstant.DELETE_CATEGORY_SUCCESS)) {
-                return responseHandler.response("", MessageConstant.CATEGORY_UPDATE_SUCCESS, true, HttpStatus.OK);
+                return responseHandler.response("", dltMsg, true, HttpStatus.OK);
             }
             return responseHandler.response("", dltMsg, false, HttpStatus.NOT_FOUND);
         } catch (Exception e) {

@@ -10,8 +10,6 @@ import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-@ToString
 @Setter
 @Getter
 @Entity
@@ -23,7 +21,7 @@ public class Category extends BaseEntity {
 
     private String description;
 
-    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(targetEntity =Quiz.class ,mappedBy = "category", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Quiz> quizzer = new LinkedHashSet<>();
 

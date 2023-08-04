@@ -21,4 +21,15 @@ public class MessageConstant {
     public static final String ERROR_UPDATE_CATEGORY = "Error while updating category.";
     public static final String DELETE_CATEGORY_SUCCESS = "Category deleted successfully.";
     public static final String ERROR_DELETE_CATEGORY = "Error while deleting category.";
+    public static final String QUIZ_ADD_SUCCESS = "Quiz added successfully.";
+    public static final String ERROR_ADD_QUIZ = "Error while adding quiz.";
+    public static final String QUIZ_NOT_FOUND = "Quiz not found.";
+    public static final String DELETE_QUIZ_SUCCESS = "Quiz deleted successfully.";
+    public static final String ERROR_DELETE_QUIZ = "Error while deleting quiz.";
+    public static final String GET_ALL_QUIZ_SUCCESS = "All quiz fetched successfully.";
+    public static final String ERROR_GET_ALL_QUIZ = "Error while fetching all quiz.";
+    public static final String GET_QUIZ_SUCCESS = "Quiz fetched successfully.";
+    public static final String ERROR_GET_QUIZ = "Error while fetching quiz.";
+    public static final String QUIZ_UPDATE_SUCCESS = "Quiz updated successfully.";
+    public static final String ERROR_UPDATE_QUIZ = "Error while updating quiz.";
 }
