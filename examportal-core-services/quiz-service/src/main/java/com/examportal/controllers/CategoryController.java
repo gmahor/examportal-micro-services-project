@@ -8,8 +8,6 @@ import com.examportal.entities.Category;
 import com.examportal.services.CategoryService;
 import com.examportal.utils.CommonUtilService;
 import com.examportal.utils.ResponseHandler;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,7 +15,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.security.Key;
 
 @Slf4j
 @RestController
@@ -68,6 +65,20 @@ public class CategoryController {
         return responseHandler.response("", MessageConstant.ERROR_ADD_CATEGORY, false, HttpStatus.BAD_GATEWAY);
     }
 
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Object> getCategory(@PathVariable(name = "id") Long id) {
+        try {
+            log.info("Get category request received by id : {}", id);
+            Category category = categoryService.getCategory(id);
+            if (category != null) {
+                return responseHandler.response(category, MessageConstant.GET_CATEGORY_SUCCESS, true, HttpStatus.OK);
+            }
+            return responseHandler.response("", MessageConstant.CATEGORY_NOT_FOUND, false, HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            log.error(MessageConstant.ERROR_GET_CATEGORY, e);
+        }
+        return responseHandler.response("", MessageConstant.ERROR_GET_CATEGORY, false, HttpStatus.BAD_GATEWAY);
+    }
 
 
 }
