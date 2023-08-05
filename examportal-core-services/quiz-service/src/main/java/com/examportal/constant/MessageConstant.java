@@ -32,4 +32,6 @@ public class MessageConstant {
     public static final String ERROR_GET_QUIZ = "Error while fetching quiz.";
     public static final String QUIZ_UPDATE_SUCCESS = "Quiz updated successfully.";
     public static final String ERROR_UPDATE_QUIZ = "Error while updating quiz.";
+    public static final String QUIZ_EXISTS = "Quiz exists with this id.";
+    public static final String ERROR_QUIZ_EXISTS = "Error while finding quiz.";
 }

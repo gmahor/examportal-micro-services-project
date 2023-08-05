@@ -78,5 +78,7 @@ public class QuizService {
         return null;
     }
 
-
+    public boolean quizExists(long id){
+       return quizRepository.existsById(id);
+    }
 }

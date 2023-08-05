@@ -131,5 +131,18 @@ public class QuizController {
         return responseHandler.response("", MessageConstant.ERROR_UPDATE_QUIZ, false, HttpStatus.BAD_GATEWAY);
     }
 
-
+    @GetMapping(value = "/quizExists")
+    public ResponseEntity<Object> quizExists(@RequestParam(name = "id") Long id) {
+        try {
+            log.info("Get category request received by id : {}", id);
+            boolean exists = quizService.quizExists(id);
+            if (exists) {
+                return responseHandler.response(true, MessageConstant.QUIZ_EXISTS, true, HttpStatus.OK);
+            }
+            return responseHandler.response("", MessageConstant.QUIZ_NOT_FOUND, false, HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            log.error(MessageConstant.ERROR_QUIZ_EXISTS, e);
+        }
+        return responseHandler.response("", MessageConstant.ERROR_QUIZ_EXISTS, false, HttpStatus.BAD_GATEWAY);
+    }
 }
