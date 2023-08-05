@@ -15,6 +15,4 @@ public class EnvConfiguration {
     @Value("${jwtSecret}")
     private String jwtSecret;
 
-
-
 }

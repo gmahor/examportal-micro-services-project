@@ -65,7 +65,6 @@ public class CategoryController {
             Category category = categoryService.addCategory(categoryDTO);
             if (category != null)
                 return responseHandler.response(category, MessageConstant.ADD_CATEGORY_SUCCESS, true, HttpStatus.OK);
-            return responseHandler.response("", MessageConstant.ADD_CATEGORY_SUCCESS, true, HttpStatus.OK);
         } catch (Exception e) {
             log.info(MessageConstant.ERROR_ADD_CATEGORY, e);
         }
