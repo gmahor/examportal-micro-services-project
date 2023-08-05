@@ -40,6 +40,8 @@
         <module>discovery-server</module>
         <module>api-gateway</module>
         <module>user-service</module>
+        <module>quiz-service</module>
+        <module>question-service</module>
     </modules>
 
 </project>

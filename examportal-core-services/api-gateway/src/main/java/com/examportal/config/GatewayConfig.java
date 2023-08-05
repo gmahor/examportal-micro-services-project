@@ -24,6 +24,9 @@ public class GatewayConfig {
                 .route("quiz-service-route", r -> r.path("/api/v1/quiz/**", "/api/v1/cat/**")
                         .filters(f -> f.filter(authenticationFilter))
                         .uri("lb://quiz-service"))
+                .route("question-service-route", r -> r.path("/api/v1/question/**")
+                        .filters(f -> f.filter(authenticationFilter))
+                        .uri("lb://question-service"))
                 .build();
     }
 }

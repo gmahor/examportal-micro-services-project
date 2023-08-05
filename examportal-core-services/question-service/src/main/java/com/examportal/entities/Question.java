@@ -1,15 +1,21 @@
 package com.examportal.entities;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
-@ToString
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 @Entity
+@Table(name = "question")
 public class Question extends BaseEntity {
 
     @Column(length = 5000)
@@ -31,8 +37,6 @@ public class Question extends BaseEntity {
     @Transient
     private String givenAnswer;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Quiz quiz;
-
+    private Long quizId;
 
 }
