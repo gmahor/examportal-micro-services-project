@@ -1,9 +1,14 @@
 package com.examportal.entities;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
-public class Quiz extends BaseEntity {
+@Getter
+@Setter
+public class Quiz {
+
+    private Long id;
+
 
     private String title;
 
@@ -13,7 +18,7 @@ public class Quiz extends BaseEntity {
 
     private String numberOfQuestions;
 
-    private boolean active = false;
+    private boolean active;
 
     private Category category;
 
