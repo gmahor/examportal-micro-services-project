@@ -123,4 +123,20 @@ public class QuestionController {
         }
         return responseHandler.response("", MessageConstant.ERROR_DELETE_QUESTION, false, HttpStatus.BAD_GATEWAY);
     }
+
+    @GetMapping(value = "/questionsByQuiz")
+    public ResponseEntity<Object> questionsByQuiz(@RequestParam(name = "quizId") Long quizId) {
+        try {
+            log.info("Get questions by quizId request received by quizId : {}", quizId);
+            List<QuestionRespDTO> questionRespDTOS = questionService.questionsByQuiz(quizId);
+            if (!questionRespDTOS.isEmpty()) {
+                return responseHandler.response(questionRespDTOS, MessageConstant.QUESTIONS_GET_SUCCESS, true, HttpStatus.OK);
+            }
+            return responseHandler.response("", MessageConstant.QUESTION_NOT_FOUND, false, HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            log.error(MessageConstant.ERROR_GETTING_QUESTIONS, e);
+        }
+        return responseHandler.response("", MessageConstant.ERROR_GETTING_QUESTIONS, false, HttpStatus.BAD_REQUEST);
+    }
+
 }

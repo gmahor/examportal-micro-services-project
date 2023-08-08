@@ -98,11 +98,7 @@ public class QuestionService {
 
     public List<QuestionRespDTO> getQuestions() {
         List<Question> questions = questionRepository.findAll();
-        return questions.stream().map(question -> {
-            QuestionRespDTO questionRespDTO = modelMapper.map(question, QuestionRespDTO.class);
-            questionRespDTO.setQuiz(question.getQuizId() != null && this.getQuiz(question.getQuizId()) != null ? this.getQuiz(question.getQuizId()) : null);
-            return questionRespDTO;
-        }).collect(Collectors.toList());
+        return getQuestionRespDTOS(questions);
     }
 
     public Question updateQuestion(UpdateQuestionDTO updateQuestionDTO) {
@@ -128,5 +124,18 @@ public class QuestionService {
             return MessageConstant.DELETE_QUESTION_SUCCESS;
         }
         return MessageConstant.QUESTION_NOT_FOUND;
+    }
+
+    public List<QuestionRespDTO> questionsByQuiz(long quizId) {
+        List<Question> questions = questionRepository.findByQuizId(quizId);
+        return getQuestionRespDTOS(questions);
+    }
+
+    private List<QuestionRespDTO> getQuestionRespDTOS(List<Question> questions) {
+        return questions.stream().map(question -> {
+            QuestionRespDTO questionRespDTO = modelMapper.map(question, QuestionRespDTO.class);
+            questionRespDTO.setQuiz(question.getQuizId() != null && this.getQuiz(question.getQuizId()) != null ? this.getQuiz(question.getQuizId()) : null);
+            return questionRespDTO;
+        }).collect(Collectors.toList());
     }
 }
